@@ -15,6 +15,18 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.label = UILabel()
+        
+        
+        contentView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: contentView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+        ])
+        
+        
     }
     
     required init?(coder: NSCoder) {

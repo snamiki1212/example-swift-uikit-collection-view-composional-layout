@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     
     private func generateRestaurantsContainer() -> UICollectionView{
         // item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
         
         // group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(12))
         let subitems = [item]
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: subitems)
 
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
         // container
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.setCollectionViewLayout(layout, animated: false)
+        cv.collectionViewLayout = layout
         
         return cv
     }
@@ -44,10 +44,12 @@ class ViewController: UIViewController {
         photoContainer = container
         view.addSubview(container)
         container.register(RestaurantCollectionViewCell.self, forCellWithReuseIdentifier: RestaurantCollectionViewCell.cellId)
+        
+        // delegation
         container.delegate = self
         container.dataSource = self
         
-        // container style
+        // style
         container.translatesAutoresizingMaskIntoConstraints = false
         container.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         container.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -55,6 +57,7 @@ class ViewController: UIViewController {
         container.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         container.backgroundColor = .red
         
+        view.layoutIfNeeded()
         
         //
         print("RENDER")
@@ -63,34 +66,26 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("NUMb")
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellForItemAt")
+        print("RENDER CELL. No", indexPath.item)
         guard let cell = photoContainer?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }
         
-        print("OK")
         cell.label.text = list[indexPath.item]
         cell.backgroundColor = .blue
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("NUMBER")
+        print("ITEM NUMBER", list.count)
         return list.count
     }
+    
+    
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.photoContainer?.bounds.width)!, height: 44)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    
+extension ViewController: UICollectionViewDelegate{
+    //
 }

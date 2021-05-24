@@ -13,20 +13,21 @@ class ViewController: UIViewController {
     weak var tagCollectionView: UICollectionView?;
     
     let restaurants = ["a", "b", "c", "d"]
-    let tags = ["japanese", "french", "chainese"]
+    let tags = ["japanese", "french", "chainese", "japanese", "french", "chainese", ]
     
     private func generateTagCollectionView() -> UICollectionView {
         // item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(14))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
         
         // group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(24))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let subitems = [item]
-        let group = NSCollectionLayoutGroup.vertical    (layoutSize: groupSize, subitems: subitems)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: subitems)
 
         // section
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .paging
         
         // layout
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         // collection-view
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.collectionViewLayout = layout
+        cv.isPagingEnabled = true
         
         return cv
     }
@@ -82,7 +84,7 @@ class ViewController: UIViewController {
             tagCV.topAnchor.constraint(equalTo: view.topAnchor),
             tagCV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tagCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tagCV.heightAnchor.constraint(equalToConstant: 200),
+            tagCV.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
         ])
         tagCV.backgroundColor = .yellow
         

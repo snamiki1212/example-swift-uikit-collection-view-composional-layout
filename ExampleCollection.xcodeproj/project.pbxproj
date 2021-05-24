@@ -13,6 +13,7 @@
 		2473C320265AED9300E9793D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2473C31F265AED9300E9793D /* Assets.xcassets */; };
 		2473C323265AED9300E9793D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2473C321265AED9300E9793D /* LaunchScreen.storyboard */; };
 		2473C32C265AF68800E9793D /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473C32B265AF68800E9793D /* RestaurantCollectionViewCell.swift */; };
+		2473C32E265C64E900E9793D /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473C32D265C64E900E9793D /* TagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2473C322265AED9300E9793D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2473C324265AED9300E9793D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2473C32B265AF68800E9793D /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
+		2473C32D265C64E900E9793D /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				2473C32B265AF68800E9793D /* RestaurantCollectionViewCell.swift */,
+				2473C32D265C64E900E9793D /* TagCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				2473C31B265AED9100E9793D /* ViewController.swift in Sources */,
 				2473C32C265AF68800E9793D /* RestaurantCollectionViewCell.swift in Sources */,
+				2473C32E265C64E900E9793D /* TagCollectionViewCell.swift in Sources */,
 				2473C317265AED9100E9793D /* AppDelegate.swift in Sources */,
 				2473C319265AED9100E9793D /* SceneDelegate.swift in Sources */,
 			);

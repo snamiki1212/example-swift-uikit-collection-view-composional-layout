@@ -9,10 +9,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    weak var photoContainer: UICollectionView?;
-    let list = ["a", "b", "c"]
+    weak var restaurantCollectionView: UICollectionView?;
+    weak var tagCollectionView: UICollectionView?;
     
-    private func generateRestaurantsContainer() -> UICollectionView{
+    let restaurants = ["a", "b", "c", "d"]
+    let tags = ["japanese", "french", "chainese"]
+    
+    private func generateTagCollectionView() -> UICollectionView {
+        // item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(14))
+        let item = NSCollectionLayoutItem(layoutSize:  itemSize)
+        
+        // group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(24))
+        let subitems = [item]
+        let group = NSCollectionLayoutGroup.vertical    (layoutSize: groupSize, subitems: subitems)
+
+        // section
+        let section = NSCollectionLayoutSection(group: group)
+        
+        // layout
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        // collection-view
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.collectionViewLayout = layout
+        
+        return cv
+    }
+    
+    private func generateRestaurantCollectionView() -> UICollectionView{
         // item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
@@ -28,7 +54,7 @@ class ViewController: UIViewController {
         // layout
         let layout = UICollectionViewCompositionalLayout(section: section)
         
-        // container
+        // collection-view
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.collectionViewLayout = layout
         
@@ -39,48 +65,96 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "My Restaurants"
         
-        // container
-        let container = generateRestaurantsContainer()
-        photoContainer = container
-        view.addSubview(container)
-        container.register(RestaurantCollectionViewCell.self, forCellWithReuseIdentifier: RestaurantCollectionViewCell.cellId)
+        
+        // MARK: - TAG
+        let tagCV = generateTagCollectionView()
+        self.tagCollectionView = tagCV
+        view.addSubview(tagCV)
+        tagCV.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.cellId)
         
         // delegation
-        container.delegate = self
-        container.dataSource = self
+        tagCV.delegate = self
+        tagCV.dataSource = self
         
         // style
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        container.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        container.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        container.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        container.backgroundColor = .red
+        tagCV.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tagCV.topAnchor.constraint(equalTo: view.topAnchor),
+            tagCV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tagCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tagCV.heightAnchor.constraint(equalToConstant: 200),
+        ])
+        tagCV.backgroundColor = .yellow
         
-        view.layoutIfNeeded()
+        // MARK: - restaurantCV
+        let restaurantCV = generateRestaurantCollectionView()
+        self.restaurantCollectionView = restaurantCV
+        view.addSubview(restaurantCV)
+        restaurantCV.register(RestaurantCollectionViewCell.self, forCellWithReuseIdentifier: RestaurantCollectionViewCell.cellId)
+        
+        // delegation
+        restaurantCV.delegate = self
+        restaurantCV.dataSource = self
+        
+        // style
+        restaurantCV.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            restaurantCV.topAnchor.constraint(equalTo: tagCV.bottomAnchor),
+            restaurantCV.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            restaurantCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            restaurantCV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        restaurantCV.backgroundColor = .red
+        
         
         //
+        view.layoutIfNeeded()
         print("RENDER")
     }
 }
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        print("NUMBER OF SEZEIONS")
+        switch collectionView {
+        case self.tagCollectionView:
+            return 1
+        case self.restaurantCollectionView:
+            return 1
+        default:
+            fatalError("Invalid Collection View")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("RENDER CELL. No", indexPath.item)
-        guard let cell = photoContainer?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }
+        print("RENDER CELL.")
         
-        cell.label.text = list[indexPath.item]
-        cell.backgroundColor = .blue
-        return cell
+        switch collectionView {
+        case self.tagCollectionView:
+            guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }
+            cell.label.text = tags[indexPath.item]
+            cell.backgroundColor = .systemPink
+            return cell
+        case self.restaurantCollectionView:
+            guard let cell = restaurantCollectionView?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }
+            
+            cell.label.text = restaurants[indexPath.item]
+            cell.backgroundColor = .blue
+            return cell
+        default:
+            fatalError("Invalid Collection View")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("ITEM NUMBER", list.count)
-        return list.count
+        switch collectionView {
+        case self.tagCollectionView:
+            return tags.count
+        case self.restaurantCollectionView:
+            return restaurants.count
+        default:
+            fatalError("Invalid Collection View")
+        }
     }
     
     

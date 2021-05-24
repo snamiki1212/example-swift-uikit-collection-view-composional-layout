@@ -1,14 +1,14 @@
 //
-//  RestaurantCollectionViewCell.swift
+//  TagCollectionViewCell.swift
 //  ExampleCollection
 //
-//  Created by shunnamiki on 2021/05/23.
+//  Created by shunnamiki on 2021/05/24.
 //
 
 import UIKit
 
-class RestaurantCollectionViewCell: UICollectionViewCell {
-    static let cellId = "CELL_ID"
+class TagCollectionViewCell: UICollectionViewCell {
+    static let cellId = "TAG_CELL_ID"
     var label = UILabel();
 
     override init(frame: CGRect) {

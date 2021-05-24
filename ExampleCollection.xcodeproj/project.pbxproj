@@ -60,7 +60,6 @@
 			children = (
 				2473C316265AED9100E9793D /* AppDelegate.swift */,
 				2473C318265AED9100E9793D /* SceneDelegate.swift */,
-				2473C31A265AED9100E9793D /* ViewController.swift */,
 				2473C32A265AF66200E9793D /* Controllers */,
 				2473C31F265AED9300E9793D /* Assets.xcassets */,
 				2473C321265AED9300E9793D /* LaunchScreen.storyboard */,
@@ -72,6 +71,7 @@
 		2473C32A265AF66200E9793D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2473C31A265AED9100E9793D /* ViewController.swift */,
 				2473C32B265AF68800E9793D /* RestaurantCollectionViewCell.swift */,
 				2473C32D265C64E900E9793D /* TagCollectionViewCell.swift */,
 			);

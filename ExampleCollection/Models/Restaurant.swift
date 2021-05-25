@@ -25,6 +25,17 @@ struct Restaurant {
             Restaurant(id: UUID().uuidString, name: "Cyan cat", type: "French", price: "$$$"),
             Restaurant(id: UUID().uuidString, name: "Magenta margaret", type: "India", price: "$$$"),
             Restaurant(id: UUID().uuidString, name: "Transparent stone", type: "Chainese", price: "$$$"),
+            
+            Restaurant(id: UUID().uuidString, name: "Front Frigt", type: "Chainese", price: "$$"),
+            Restaurant(id: UUID().uuidString, name: "Back pack", type: "French", price: "$$$"),
+            Restaurant(id: UUID().uuidString, name: "Right copy", type: "Chainese", price: "$$"),
+            Restaurant(id: UUID().uuidString, name: "Top of top", type: "Chainese", price: "$$$"),
+            Restaurant(id: UUID().uuidString, name: "Left zone", type: "American", price: "$$"),
+            Restaurant(id: UUID().uuidString, name: "Bottom size", type: "French", price: "$$$"),
+            Restaurant(id: UUID().uuidString, name: "East Eagle", type: "Japanese", price: "$"),
+            Restaurant(id: UUID().uuidString, name: "North Natto", type: "Brazilian", price: "$$"),
+            Restaurant(id: UUID().uuidString, name: "South Souse", type: "India", price: "$$$"),
+            Restaurant(id: UUID().uuidString, name: "West wow", type: "French", price: "$"),
         ]
     }
 }

@@ -125,10 +125,6 @@ class ViewController: UIViewController {
             restaurantCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             restaurantCV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        
-        //
-        view.layoutIfNeeded()
-        print("RENDER__", selectedTags)
     }
 }
 

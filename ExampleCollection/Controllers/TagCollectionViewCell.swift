@@ -43,7 +43,6 @@ class TagCollectionViewCell: UICollectionViewCell {
 
 extension TagCollectionViewCell{
     @objc func onClick(){
-        print("ON Click", model)
         guard let delegation = delegation, let model = model else { fatalError("Invalid error on Click")}
         delegation.toggle(model)
     }

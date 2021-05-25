@@ -52,11 +52,11 @@ class ViewController: UIViewController {
     
     private func generateRestaurantCollectionView() -> UICollectionView{
         // item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
         
         // group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(12))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(68))
         let subitems = [item]
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: subitems)
 

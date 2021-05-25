@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     let restaurants = ["a", "b", "c", "d"]
     let tags = ["japanese", "french", "chainese", "japanese", "french", "chainese", ]
+    var selectedTagIndex = [String]()
     
     private func generateTagCollectionView() -> UICollectionView {
         // item
@@ -112,13 +113,12 @@ class ViewController: UIViewController {
         
         //
         view.layoutIfNeeded()
-        print("RENDER")
+        print("RENDER__")
     }
 }
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("NUMBER OF SEZEIONS")
         switch collectionView {
         case self.tagCollectionView:
             return 1
@@ -130,8 +130,6 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("RENDER CELL.")
-        
         switch collectionView {
         case self.tagCollectionView:
             guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }

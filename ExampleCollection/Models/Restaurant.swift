@@ -7,6 +7,10 @@
 
 import Foundation
 
+func uuid() -> String{
+    return UUID().uuidString
+}
+
 struct Restaurant {
     let id: String
     let name: String
@@ -15,27 +19,27 @@ struct Restaurant {
     
     static func createExampleList() -> [Restaurant] {
         return [
-            Restaurant(id: UUID().uuidString, name: "Nash's dinner", type: Tag.Japanese, price: Price.low),
-            Restaurant(id: UUID().uuidString, name: "Red morning", type: Tag.Brazilian, price: Price.middle),
-            Restaurant(id: UUID().uuidString, name: "Black thunder", type: Tag.India, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Pink pinky", type: Tag.French, price: Price.low),
-            Restaurant(id: UUID().uuidString, name: "Silver bullet", type: Tag.Brazilian, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Yellow jeans", type: Tag.Chainese, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Green Food", type: Tag.American, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Cyan cat", type: Tag.French, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Magenta margaret", type: Tag.India, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Transparent stone", type: Tag.Chainese, price: Price.high),
+            Restaurant(id: uuid(), name: "Nash's dinner", type: .Japanese, price: .low),
+            Restaurant(id: uuid(), name: "Red morning", type: .Brazilian, price: .middle),
+            Restaurant(id: uuid(), name: "Black thunder", type: .India, price: .high),
+            Restaurant(id: uuid(), name: "Pink pinky", type: .French, price: .low),
+            Restaurant(id: uuid(), name: "Silver bullet", type: .Brazilian, price: .high),
+            Restaurant(id: uuid(), name: "Yellow jeans", type: .Chainese, price: .high),
+            Restaurant(id: uuid(), name: "Green Food", type: .American, price: .high),
+            Restaurant(id: uuid(), name: "Cyan cat", type: .French, price: .high),
+            Restaurant(id: uuid(), name: "Magenta margaret", type: .India, price: .high),
+            Restaurant(id: uuid(), name: "Transparent stone", type: .Chainese, price: .high),
             
-            Restaurant(id: UUID().uuidString, name: "Front Frigt", type: Tag.Chainese, price: Price.middle),
-            Restaurant(id: UUID().uuidString, name: "Back pack", type: Tag.French, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Right copy", type: Tag.Chainese, price: Price.middle),
-            Restaurant(id: UUID().uuidString, name: "Top of top", type: Tag.Chainese, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "Left zone", type: Tag.American, price: Price.middle),
-            Restaurant(id: UUID().uuidString, name: "Bottom size", type: Tag.French, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "East Eagle", type: Tag.Japanese, price: Price.low),
-            Restaurant(id: UUID().uuidString, name: "North Natto", type: Tag.Brazilian, price: Price.middle),
-            Restaurant(id: UUID().uuidString, name: "South Souse", type: Tag.India, price: Price.high),
-            Restaurant(id: UUID().uuidString, name: "West wow", type: Tag.French, price: Price.low),
+            Restaurant(id: uuid(), name: "Front Frigt", type: .Chainese, price: .middle),
+            Restaurant(id: uuid(), name: "Back pack", type: .French, price: .high),
+            Restaurant(id: uuid(), name: "Right copy", type: .Chainese, price: .middle),
+            Restaurant(id: uuid(), name: "Top of top", type: .Chainese, price: .high),
+            Restaurant(id: uuid(), name: "Left zone", type: .American, price: .middle),
+            Restaurant(id: uuid(), name: "Bottom size", type: .French, price: .high),
+            Restaurant(id: uuid(), name: "East Eagle", type: .Japanese, price: .low),
+            Restaurant(id: uuid(), name: "North Natto", type: .Brazilian, price: .middle),
+            Restaurant(id: uuid(), name: "South Souse", type: .India, price: .high),
+            Restaurant(id: uuid(), name: "West wow", type: .French, price: .low),
         ]
     }
 }

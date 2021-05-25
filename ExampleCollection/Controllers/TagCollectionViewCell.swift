@@ -7,9 +7,11 @@
 
 import UIKit
 
+let TRANSPARENT = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+let TRANSPARENT_GRAY = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.3)
+
 class TagCollectionViewCell: UICollectionViewCell {
     static let cellId = "TAG_CELL_ID"
-    var button = UIButton();
     var model: String? {
         didSet {
             button.setTitle(self.model, for: .normal) 
@@ -17,10 +19,11 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     var _isSelected: Bool = false {
         didSet {
-            button.titleLabel?.backgroundColor = _isSelected ? .blue : .systemPink
+            button.titleLabel?.backgroundColor = _isSelected ? TRANSPARENT_GRAY : TRANSPARENT
         }
     }
     var delegation: ViewControllerDelegation?
+    private var button = UIButton();
 
     override init(frame: CGRect) {
         super.init(frame: frame)

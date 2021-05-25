@@ -114,7 +114,7 @@ class ViewController: UIViewController {
             tagCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tagCV.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
         ])
-        tagCV.backgroundColor = .yellow
+        tagCV.backgroundColor = UIColor(red: 0, green: 50/255, blue: 50/255, alpha: 1)
         
         // MARK: - restaurantCV
         let restaurantCV = generateRestaurantCollectionView()
@@ -175,7 +175,6 @@ extension ViewController: UICollectionViewDataSource {
             let item = tags[indexPath.item]
             cell.model = item
             cell._isSelected = selectedTags.contains(item)
-            cell.backgroundColor = .systemPink
             cell.delegation = self
             return cell
         case self.restaurantCollectionView:

@@ -15,6 +15,7 @@ class TagCollectionViewCell: UICollectionViewCell {
             button.setTitle(self.model, for: .normal) 
         }
     }
+    var delegation: ViewControllerDelegation?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,9 +25,17 @@ class TagCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor),
         ])
+        button.addTarget(self, action: #selector(onClick), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension TagCollectionViewCell{
+    @objc func onClick(){
+        guard let delegation = delegation, let model = model else { fatalError("Invalid error on Click")}
+        delegation.toggle(model)
     }
 }

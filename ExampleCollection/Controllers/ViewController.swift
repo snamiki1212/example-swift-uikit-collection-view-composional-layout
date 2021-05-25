@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     weak var tagCollectionView: UICollectionView?;
     
     let tags = ["japanese", "french", "chainese", "Brazilian", "American", "Indian", ]
-    var selectedTagIndex = [String]()
+    var selectedTags = [String]()
 
     let restaurants = Restaurant.createExampleList()
     var selectedRestaurantIds = [String]() {
@@ -120,13 +120,24 @@ class ViewController: UIViewController {
         
         //
         view.layoutIfNeeded()
-        print("RENDER__")
+        print("RENDER__", selectedTags)
     }
 }
 
-//protocol ViewControllerDelegation {
-//    func toggle()
-//}
+protocol ViewControllerDelegation {
+    func toggle(_ tag: String)
+}
+
+extension ViewController: ViewControllerDelegation {
+    func toggle(_ tag: String) {
+        if let idx = selectedTags.firstIndex(of: tag) {
+            selectedTags.remove(at: idx)
+        } else {
+            selectedTags.append(tag)
+        }
+        print("selectedTags", selectedTags)
+    }
+}
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -146,7 +157,7 @@ extension ViewController: UICollectionViewDataSource {
             guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }
             cell.model = tags[indexPath.item]
             cell.backgroundColor = .systemPink
-//            cell.delegation = self
+            cell.delegation = self
             return cell
         case self.restaurantCollectionView:
             guard let cell = restaurantCollectionView?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }

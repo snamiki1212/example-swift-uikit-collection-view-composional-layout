@@ -23,7 +23,7 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     private func updateUI(){
         guard let restaurant = restaurant else { return }
         nameLabel.text = restaurant.name
-        typeLabel.text = restaurant.type
+        typeLabel.text = restaurant.type.rawValue
         priceLabel.text = restaurant.price
     }
 

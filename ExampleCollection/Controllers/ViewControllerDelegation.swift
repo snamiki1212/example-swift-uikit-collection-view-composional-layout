@@ -6,5 +6,5 @@
 //
 
 protocol ViewControllerDelegation {
-    func toggle(_ tag: String)
+    func toggle(_ tag: Tag)
 }

@@ -12,10 +12,9 @@ class ViewController: UIViewController {
     weak var restaurantCollectionView: UICollectionView?;
     weak var tagCollectionView: UICollectionView?;
     
-    // TODO: Use enum
-    let tags = ["Japanese", "French", "Chainese", "Brazilian", "American", "India"]
+    let tags = Tag.createAll()
     let restaurants = Restaurant.createExampleList()
-    var selectedTags = [String]() {
+    var selectedTags = [Tag]() {
         didSet {
             filteredRestaurants = selectedTags.isEmpty
                 ? restaurants
@@ -129,7 +128,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ViewControllerDelegation {
-    func toggle(_ tag: String) {
+    func toggle(_ tag: Tag) {
         // update model data
         if let idx = selectedTags.firstIndex(of: tag) {
             selectedTags.remove(at: idx)

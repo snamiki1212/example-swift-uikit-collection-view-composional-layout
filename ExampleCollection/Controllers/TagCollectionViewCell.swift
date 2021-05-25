@@ -12,9 +12,9 @@ let TRANSPARENT_GRAY = UIColor(red: 200/255, green: 200/255, blue: 200/255, alph
 
 class TagCollectionViewCell: UICollectionViewCell {
     static let cellId = "TAG_CELL_ID"
-    var model: String? {
+    var model: Tag? {
         didSet {
-            button.setTitle(self.model, for: .normal) 
+            button.setTitle(self.model?.rawValue, for: .normal) 
         }
     }
     var _isSelected: Bool = false {

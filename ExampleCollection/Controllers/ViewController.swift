@@ -135,7 +135,7 @@ extension ViewController: ViewControllerDelegation {
         } else {
             selectedTags.append(tag)
         }
-        print("selectedTags", selectedTags)
+        tagCollectionView?.reloadData()
     }
 }
 
@@ -155,7 +155,10 @@ extension ViewController: UICollectionViewDataSource {
         switch collectionView {
         case self.tagCollectionView:
             guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }
-            cell.model = tags[indexPath.item]
+            
+            let item = tags[indexPath.item]
+            cell.model = item
+            cell._isSelected = selectedTags.contains(item)
             cell.backgroundColor = .systemPink
             cell.delegation = self
             return cell

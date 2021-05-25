@@ -15,6 +15,11 @@ class TagCollectionViewCell: UICollectionViewCell {
             button.setTitle(self.model, for: .normal) 
         }
     }
+    var _isSelected: Bool = false {
+        didSet {
+            button.titleLabel?.backgroundColor = _isSelected ? .blue : .systemPink
+        }
+    }
     var delegation: ViewControllerDelegation?
 
     override init(frame: CGRect) {

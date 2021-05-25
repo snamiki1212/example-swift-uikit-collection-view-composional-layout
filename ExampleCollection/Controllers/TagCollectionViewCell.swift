@@ -19,11 +19,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            label.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             label.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ])
         
         

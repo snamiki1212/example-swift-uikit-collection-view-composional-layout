@@ -17,17 +17,18 @@ class ViewController: UIViewController {
     
     private func generateTagCollectionView() -> UICollectionView {
         // item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
         // group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0))
         let subitems = [item]
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: subitems)
 
         // section
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .paging
+        section.orthogonalScrollingBehavior = .continuous
         
         // layout
         let layout = UICollectionViewCompositionalLayout(section: section)

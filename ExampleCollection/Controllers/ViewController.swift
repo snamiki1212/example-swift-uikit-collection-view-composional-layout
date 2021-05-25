@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     weak var restaurantCollectionView: UICollectionView?;
     weak var tagCollectionView: UICollectionView?;
     
-    let tags = ["japanese", "french", "chainese", "Brazilian", "American", "Indian", ]
+    // TODO: Use enum
+    let tags = ["Japanese", "French", "Chainese", "Brazilian", "American", "India", ]
     var selectedTags = [String]()
 
     let restaurants = Restaurant.createExampleList()

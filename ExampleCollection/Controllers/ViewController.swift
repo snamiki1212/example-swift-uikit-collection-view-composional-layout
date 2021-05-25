@@ -14,28 +14,18 @@ class ViewController: UIViewController {
     
     // TODO: Use enum
     let tags = ["Japanese", "French", "Chainese", "Brazilian", "American", "India", ]
+    let restaurants = Restaurant.createExampleList()
     var selectedTags = [String]() {
         didSet {
             filteredRestaurants = selectedTags.isEmpty
                 ? restaurants
                 : restaurants.filter({ selectedTags.contains($0.type)  })
 
-            // update collection-view data
             restaurantCollectionView?.reloadData()
             tagCollectionView?.reloadData()
         }
     }
-
-    let restaurants = Restaurant.createExampleList()
     var filteredRestaurants = [Restaurant]()
-    
-    //
-    var selectedRestaurantIds = [String]() {
-        didSet {
-            self.selectedRestaurants = restaurants.filter { selectedRestaurantIds.contains($0.id) }
-        }
-    }
-    var selectedRestaurants = [Restaurant]()
     
     private func generateTagCollectionView() -> UICollectionView {
         // item
@@ -59,6 +49,7 @@ class ViewController: UIViewController {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.collectionViewLayout = layout
         cv.isPagingEnabled = true
+        cv.backgroundColor = UIColor(red: 0, green: 50/255, blue: 50/255, alpha: 1)
         
         return cv
     }
@@ -114,7 +105,6 @@ class ViewController: UIViewController {
             tagCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tagCV.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
         ])
-        tagCV.backgroundColor = UIColor(red: 0, green: 50/255, blue: 50/255, alpha: 1)
         
         // MARK: - restaurantCV
         let restaurantCV = generateRestaurantCollectionView()
@@ -171,7 +161,6 @@ extension ViewController: UICollectionViewDataSource {
         switch collectionView {
         case self.tagCollectionView:
             guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }
-            
             let item = tags[indexPath.item]
             cell.model = item
             cell._isSelected = selectedTags.contains(item)

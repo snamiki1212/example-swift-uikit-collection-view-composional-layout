@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     weak var tagCollectionView: UICollectionView?;
     
     // TODO: Use enum
-    let tags = ["Japanese", "French", "Chainese", "Brazilian", "American", "India", ]
+    let tags = ["Japanese", "French", "Chainese", "Brazilian", "American", "India"]
     let restaurants = Restaurant.createExampleList()
     var selectedTags = [String]() {
         didSet {
@@ -28,15 +28,17 @@ class ViewController: UIViewController {
     var filteredRestaurants = [Restaurant]()
     
     private func generateTagCollectionView() -> UICollectionView {
+        let spacing = CGFloat(10)
+        
         // item
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
         // group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0))
         let subitems = [item]
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: subitems)
+        group.interItemSpacing = .fixed(spacing)
 
         // section
         let section = NSCollectionLayoutSection(group: group)
@@ -129,10 +131,6 @@ class ViewController: UIViewController {
         view.layoutIfNeeded()
         print("RENDER__", selectedTags)
     }
-}
-
-protocol ViewControllerDelegation {
-    func toggle(_ tag: String)
 }
 
 extension ViewController: ViewControllerDelegation {

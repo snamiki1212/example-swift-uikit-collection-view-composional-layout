@@ -14,9 +14,22 @@ class ViewController: UIViewController {
     
     // TODO: Use enum
     let tags = ["Japanese", "French", "Chainese", "Brazilian", "American", "India", ]
-    var selectedTags = [String]()
+    var selectedTags = [String]() {
+        didSet {
+            filteredRestaurants = selectedTags.isEmpty
+                ? restaurants
+                : restaurants.filter({ selectedTags.contains($0.type)  })
+
+            // update collection-view data
+            restaurantCollectionView?.reloadData()
+            tagCollectionView?.reloadData()
+        }
+    }
 
     let restaurants = Restaurant.createExampleList()
+    var filteredRestaurants = [Restaurant]()
+    
+    //
     var selectedRestaurantIds = [String]() {
         didSet {
             self.selectedRestaurants = restaurants.filter { selectedRestaurantIds.contains($0.id) }
@@ -76,7 +89,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "My Restaurants"
-        
+        filteredRestaurants = restaurants
         
         // MARK: - TAG
         let tagCV = generateTagCollectionView()
@@ -136,7 +149,6 @@ extension ViewController: ViewControllerDelegation {
         } else {
             selectedTags.append(tag)
         }
-        tagCollectionView?.reloadData()
     }
 }
 
@@ -165,7 +177,7 @@ extension ViewController: UICollectionViewDataSource {
             return cell
         case self.restaurantCollectionView:
             guard let cell = restaurantCollectionView?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }
-            cell.restaurant = restaurants[indexPath.item]
+            cell.restaurant = filteredRestaurants[indexPath.item]
             cell.backgroundColor = .blue
             return cell
         default:
@@ -178,7 +190,7 @@ extension ViewController: UICollectionViewDataSource {
         case self.tagCollectionView:
             return tags.count
         case self.restaurantCollectionView:
-            return restaurants.count
+            return filteredRestaurants.count
         default:
             fatalError("Invalid Collection View")
         }

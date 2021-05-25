@@ -133,7 +133,7 @@ extension ViewController: UICollectionViewDataSource {
         switch collectionView {
         case self.tagCollectionView:
             guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }
-            cell.label.text = tags[indexPath.item]
+            cell.model = tags[indexPath.item]
             cell.backgroundColor = .systemPink
             return cell
         case self.restaurantCollectionView:

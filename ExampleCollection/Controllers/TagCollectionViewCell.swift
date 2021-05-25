@@ -10,11 +10,14 @@ import UIKit
 class TagCollectionViewCell: UICollectionViewCell {
     static let cellId = "TAG_CELL_ID"
     var label = UILabel();
+    var model: String? {
+        didSet {
+            label.text = self.model
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.label = UILabel()
         
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false

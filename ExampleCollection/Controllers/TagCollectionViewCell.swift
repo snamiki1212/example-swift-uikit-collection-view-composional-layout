@@ -21,8 +21,6 @@ class TagCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             label.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor),
         ])
-        
-        
     }
     
     required init?(coder: NSCoder) {

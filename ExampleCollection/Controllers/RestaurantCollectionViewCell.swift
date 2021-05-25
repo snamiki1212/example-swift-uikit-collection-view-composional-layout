@@ -10,12 +10,19 @@ import UIKit
 class RestaurantCollectionViewCell: UICollectionViewCell {
     static let cellId = "CELL_ID"
     var label = UILabel();
+    var restaurant: Restaurant? {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    private func updateUI(){
+        label.text = restaurant?.name
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.label = UILabel()
-        
+        contentView.layoutIfNeeded()
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -24,8 +31,6 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ])
-        
-        
     }
     
     required init?(coder: NSCoder) {

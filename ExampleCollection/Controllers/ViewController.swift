@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     weak var restaurantCollectionView: UICollectionView?;
     weak var tagCollectionView: UICollectionView?;
     
-    let restaurants = ["a", "b", "c", "d"]
-    let tags = ["japanese", "french", "chainese", "japanese", "french", "chainese", ]
+    let restaurants = Restaurant.createExampleList()
+    let tags = ["japanese", "french", "chainese", "Brazilian", "American", "Indian", ]
     var selectedTagIndex = [String]()
     
     private func generateTagCollectionView() -> UICollectionView {
@@ -138,8 +138,7 @@ extension ViewController: UICollectionViewDataSource {
             return cell
         case self.restaurantCollectionView:
             guard let cell = restaurantCollectionView?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }
-            
-            cell.label.text = restaurants[indexPath.item]
+            cell.restaurant = restaurants[indexPath.item]
             cell.backgroundColor = .blue
             return cell
         default:

@@ -9,20 +9,20 @@ import UIKit
 
 class TagCollectionViewCell: UICollectionViewCell {
     static let cellId = "TAG_CELL_ID"
-    var label = UILabel();
+    var button = UIButton();
     var model: String? {
         didSet {
-            label.text = self.model
+            button.setTitle(self.model, for: .normal) 
         }
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor),
+            button.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor),
         ])
     }
     

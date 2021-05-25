@@ -124,6 +124,10 @@ class ViewController: UIViewController {
     }
 }
 
+//protocol ViewControllerDelegation {
+//    func toggle()
+//}
+
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         switch collectionView {
@@ -142,6 +146,7 @@ extension ViewController: UICollectionViewDataSource {
             guard let cell = tagCollectionView?.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.cellId, for: indexPath) as? TagCollectionViewCell else { fatalError("Invalid Cell happen") }
             cell.model = tags[indexPath.item]
             cell.backgroundColor = .systemPink
+//            cell.delegation = self
             return cell
         case self.restaurantCollectionView:
             guard let cell = restaurantCollectionView?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }

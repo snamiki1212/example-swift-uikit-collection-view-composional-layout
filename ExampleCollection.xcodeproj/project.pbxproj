@@ -17,6 +17,7 @@
 		2473C331265C790B00E9793D /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473C330265C790B00E9793D /* Restaurant.swift */; };
 		2473C333265C969A00E9793D /* ViewControllerDelegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473C332265C969A00E9793D /* ViewControllerDelegation.swift */; };
 		248F2EA6265DBE7B00A98673 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248F2EA5265DBE7B00A98673 /* Tag.swift */; };
+		248F2EA8265DC09200A98673 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248F2EA7265DC09200A98673 /* Price.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2473C330265C790B00E9793D /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		2473C332265C969A00E9793D /* ViewControllerDelegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegation.swift; sourceTree = "<group>"; };
 		248F2EA5265DBE7B00A98673 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		248F2EA7265DC09200A98673 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				2473C330265C790B00E9793D /* Restaurant.swift */,
 				248F2EA5265DBE7B00A98673 /* Tag.swift */,
+				248F2EA7265DC09200A98673 /* Price.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				2473C333265C969A00E9793D /* ViewControllerDelegation.swift in Sources */,
 				2473C32C265AF68800E9793D /* RestaurantCollectionViewCell.swift in Sources */,
 				2473C331265C790B00E9793D /* Restaurant.swift in Sources */,
+				248F2EA8265DC09200A98673 /* Price.swift in Sources */,
 				2473C32E265C64E900E9793D /* TagCollectionViewCell.swift in Sources */,
 				2473C317265AED9100E9793D /* AppDelegate.swift in Sources */,
 				2473C319265AED9100E9793D /* SceneDelegate.swift in Sources */,

@@ -24,7 +24,7 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
         guard let restaurant = restaurant else { return }
         nameLabel.text = restaurant.name
         typeLabel.text = restaurant.type.rawValue
-        priceLabel.text = restaurant.price
+        priceLabel.text = restaurant.price.rawValue
     }
 
     override init(frame: CGRect) {

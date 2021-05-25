@@ -12,9 +12,16 @@ class ViewController: UIViewController {
     weak var restaurantCollectionView: UICollectionView?;
     weak var tagCollectionView: UICollectionView?;
     
-    let restaurants = Restaurant.createExampleList()
     let tags = ["japanese", "french", "chainese", "Brazilian", "American", "Indian", ]
     var selectedTagIndex = [String]()
+
+    let restaurants = Restaurant.createExampleList()
+    var selectedRestaurantIds = [String]() {
+        didSet {
+            self.selectedRestaurants = restaurants.filter { selectedRestaurantIds.contains($0.id) }
+        }
+    }
+    var selectedRestaurants = [Restaurant]()
     
     private func generateTagCollectionView() -> UICollectionView {
         // item

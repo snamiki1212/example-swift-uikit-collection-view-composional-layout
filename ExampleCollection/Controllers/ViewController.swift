@@ -86,6 +86,7 @@ class ViewController: UIViewController {
         // collection-view
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.collectionViewLayout = layout
+        cv.backgroundColor = .white
         
         return cv
     }
@@ -133,8 +134,6 @@ class ViewController: UIViewController {
             restaurantCV.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             restaurantCV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        restaurantCV.backgroundColor = .red
-        
         
         //
         view.layoutIfNeeded()
@@ -182,7 +181,6 @@ extension ViewController: UICollectionViewDataSource {
         case self.restaurantCollectionView:
             guard let cell = restaurantCollectionView?.dequeueReusableCell(withReuseIdentifier: RestaurantCollectionViewCell.cellId, for: indexPath) as? RestaurantCollectionViewCell else { fatalError("Invalid Cell happen") }
             cell.restaurant = filteredRestaurants[indexPath.item]
-            cell.backgroundColor = .blue
             return cell
         default:
             fatalError("Invalid Collection View")

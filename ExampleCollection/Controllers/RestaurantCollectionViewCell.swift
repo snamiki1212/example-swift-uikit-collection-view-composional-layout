@@ -30,6 +30,7 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(stack)
+        contentView.backgroundColor = UIColor.init(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
         // auto-layout
         stack.translatesAutoresizingMaskIntoConstraints = false

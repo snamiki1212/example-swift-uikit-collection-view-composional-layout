@@ -22,7 +22,6 @@ class ViewController: UIViewController {
                 : restaurants.filter({ selectedTags.contains($0.type)  })
 
             restaurantCollectionView?.reloadData()
-            tagCollectionView?.reloadData()
         }
     }
     var filteredRestaurants = [Restaurant]()
@@ -135,11 +134,17 @@ class ViewController: UIViewController {
 
 extension ViewController: ViewControllerDelegation {
     func toggle(_ tag: String) {
+        // update model data
         if let idx = selectedTags.firstIndex(of: tag) {
             selectedTags.remove(at: idx)
         } else {
             selectedTags.append(tag)
         }
+        
+        // update view data
+        let index = tags.firstIndex(of: tag)!
+        let indexPath = IndexPath(item: index, section: 0)
+        tagCollectionView?.reloadItems(at: [indexPath])
     }
 }
 

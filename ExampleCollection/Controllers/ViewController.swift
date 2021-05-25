@@ -64,17 +64,21 @@ class ViewController: UIViewController {
     }
     
     private func generateRestaurantCollectionView() -> UICollectionView{
+        let spacing = CGFloat(10)
+
         // item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize:  itemSize)
         
         // group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(68))
-        let subitems = [item]
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: subitems)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(68))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = .fixed(spacing)
 
         // section
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
         
         // layout
         let layout = UICollectionViewCompositionalLayout(section: section)

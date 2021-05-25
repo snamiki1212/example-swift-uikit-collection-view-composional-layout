@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     weak var restaurantCollectionView: UICollectionView?;
     weak var tagCollectionView: UICollectionView?;
     
-    let tags = Tag.createAll()
+    let tags = Tag.allCases
     let restaurants = Restaurant.createExampleList()
     var selectedTags = [Tag]() {
         didSet {

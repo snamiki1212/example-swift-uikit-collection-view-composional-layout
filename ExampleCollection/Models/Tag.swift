@@ -10,7 +10,7 @@ import Foundation
 enum Tag: String, CaseIterable {
     case Japanese
     case French
-    case Chainese
+    case Chinese
     case Brazilian
     case American
     case India

@@ -127,7 +127,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ViewControllerDelegation {
+extension ViewController: TagCollectionViewCellDelegation {
     func toggle(_ tag: Tag) {
         // update model data
         if let idx = selectedTags.firstIndex(of: tag) {

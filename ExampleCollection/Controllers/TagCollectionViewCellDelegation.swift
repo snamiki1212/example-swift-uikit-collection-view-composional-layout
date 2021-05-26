@@ -5,6 +5,6 @@
 //  Created by shunnamiki on 2021/05/24.
 //
 
-protocol ViewControllerDelegation {
+protocol TagCollectionViewCellDelegation {
     func toggle(_ tag: Tag)
 }

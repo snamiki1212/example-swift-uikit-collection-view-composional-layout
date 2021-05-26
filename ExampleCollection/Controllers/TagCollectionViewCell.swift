@@ -22,7 +22,7 @@ class TagCollectionViewCell: UICollectionViewCell {
             button.titleLabel?.backgroundColor = _isSelected ? TRANSPARENT_GRAY : TRANSPARENT
         }
     }
-    var delegation: ViewControllerDelegation?
+    var delegation: TagCollectionViewCellDelegation?
     private var button = UIButton();
 
     override init(frame: CGRect) {
